@@ -8,7 +8,7 @@
 		(set statement (statement cdr)) )
 	(set s (NSMutableString string))
 	(if (or (== type 'imethod) (== type '-)) (s appendString:"- "))
-	(if (or (== type 'cmethod) (== type '-)) (s appendString:"+ "))
+	(if (or (== type 'cmethod) (== type '+)) (s appendString:"+ "))
 	(s appendString:(components componentsJoinedByString:" "))
 	(s appendString:";\n")
 	s)
@@ -44,7 +44,9 @@
 
 (function nug ()
 	(puts "Nug is running")
-	(set files (filelist "^nu/.*\.nu$"))
+	(set f ((NSUserDefaults standardUserDefaults) objectForKey:"fre"))
+	(if (== f nil) (set f "^nu/.*\.nu$"))
+	(set files (filelist f))
 	(set pwd ((NSString stringWithShellCommand:"pwd") stringByTrimmingCharactersInSet:(NSCharacterSet whitespaceAndNewlineCharacterSet)))
 	(if (not ((NSFileManager defaultManager) fileExistsAtPath:"#{pwd}/nug/")) 
 		((NSFileManager defaultManager) createDirectoryAtPath:"#{pwd}/nug/" attributes:nil))
@@ -55,5 +57,5 @@
 			(header writeToFile:"#{pwd}/nug/#{((file lastPathComponent) stringByDeletingPathExtension)}.h" atomically:YES) ) )) )
 
 ; bake: nubake nug.nu -s
-; compile: gcc nug.m -o nug -Framework Cocoa -Framework Nu
+; compile: gcc nug.m -o nug -framework Cocoa -framework Nu
 (nug)

@@ -20,6 +20,8 @@ The above should compile `nug`, install it into /usr/local/bin/, and then delete
 
 Navigate to a folder with a "nu" folder (but don't go into the "nu" folder) using the Terminal.  Run `nug` in the Terminal.  `nug` will create a "nug" folder (if one doesn't already exist) and create header files based on information found in the nu folder.
 
+By default, `nug` only reads the files that are in the "nu" folder.  You can change this by using the `-fre` flag.  `-fre` stands for "file regular expression."  Any files that match that regular expression will be converted using `nug`.  For instance, if you want to create headers for files in a "nu" and a "src" folder, you can use `nug -fre "^(nu|src).*\.nu".
+
 # Author
 
 [Grayson Hansard](mailto:info@fromconcentratesoftware.com)  
