@@ -4,8 +4,16 @@
 
 # Compiling
 
+Open the Terminal and navigate to the `nug` directory using the command line.  Then do the following:
+
+1. `nuke`
+2. `nuke install`
+3. `nuke clobber`
+
+The above should compile `nug`, install it into /usr/local/bin/, and then delete the generated files.  If you'd prefer to compile `nug` by hand, you can do the following:
+
 1. `nubake` the nu file using: `nubake nug.nu -s`
-2. Compile into a program using: `gcc nug.m -o nug -Framework Cocoa -Framework Nu`
+2. Compile into a program using: `gcc nug.m -o nug -framework Cocoa -framework Nu`
 3. Install the compiled `nug` where you normally put executables
 
 # Usage
@@ -14,5 +22,5 @@ Navigate to a folder with a "nu" folder (but don't go into the "nu" folder) usin
 
 # Author
 
-[Grayson Hansard](mailto:info@fromconcentratesoftware.com)
+[Grayson Hansard](mailto:info@fromconcentratesoftware.com)  
 [From Concentrate Software](http://www.fromconcentratesoftware.com/)
